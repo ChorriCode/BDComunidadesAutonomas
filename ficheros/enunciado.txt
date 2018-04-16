@@ -1,0 +1,12 @@
+padron: codMunicipio y Padron
+Municipios: codMunicipio, Municipio, codProvincia
+Provincias: codProvincia, Provincia, CodCA
+Comunidadesautonomas: codCA, CA
+
+
+sumar todos los padrones de la misma provincia
+y los padrones estan los municipios
+portanto tenemos que agrupar los municipios de una
+misma provincia y contar su habitantes
+
+SELECT codProvincia, sum(padron) from padron INNER JOIN municipios on municipios.CodMunicipio = padron.CodMunicipio WHERE CodProvincia IN (SELECT CodProvincia FROM provincias) GROUP BY CodProvincia;
