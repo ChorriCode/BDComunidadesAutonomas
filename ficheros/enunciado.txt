@@ -1,3 +1,13 @@
+Base de datos. Listado del padrón por comunidades autonomas y provincias
+Hacer un listado del padrón de las provincias españolas, agrupado por comunidad autónoma.
+
+Este ejercicio se resolvió con ficheros en la segunda evaluación.
+
+Restaurar la base de datos mysql.
+
+
+
+
 padron: codMunicipio y Padron
 Municipios: codMunicipio, Municipio, codProvincia
 Provincias: codProvincia, Provincia, CodCA
@@ -9,4 +19,12 @@ y los padrones estan los municipios
 portanto tenemos que agrupar los municipios de una
 misma provincia y contar su habitantes
 
+
+devuelve el codigo de la provincia y el total del padron por cada provincia
 SELECT codProvincia, sum(padron) from padron INNER JOIN municipios on municipios.CodMunicipio = padron.CodMunicipio WHERE CodProvincia IN (SELECT CodProvincia FROM provincias) GROUP BY CodProvincia;
+
+además devuevle el nombre de la provincia
+SELECT municipios.codProvincia, provincia, sum(padron) from municipios LEFT JOIN padron on municipios.CodMunicipio = padron.CodMunicipio LEFT JOIN provincias on municipios.CodProvincia = provincias.CodProvincia GROUP BY CodProvincia, provincia;
+
+ademas el codigo y nombre de la comunidad a la que pertenece
+SELECT provincias.CodCA, comunidadesautonomas.CA, municipios.codProvincia, provincia, sum(padron) from municipios LEFT JOIN padron on municipios.CodMunicipio = padron.CodMunicipio LEFT JOIN provincias on municipios.CodProvincia = provincias.CodProvincia LEFT JOIN comunidadesautonomas on provincias.CodCA = comunidadesautonomas.CodCA GROUP BY CodProvincia, provincia, CA order by CA, provincia;
