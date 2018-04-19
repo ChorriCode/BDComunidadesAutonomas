@@ -7,6 +7,8 @@ public class View {
 
 	
 
+
+	
 	
 public  void mostrarDatosComAutonomasProvinciasHabitantes(ArrayList<ArrayList<String>> comAutoProvYPadron ) {
 		int subTotal = 0;
@@ -19,7 +21,7 @@ public  void mostrarDatosComAutonomasProvinciasHabitantes(ArrayList<ArrayList<St
 		System.out.println("***************************************************\r");
 		
 
-		while (indiceCA <=17) {
+		while (indiceCA <20) {
 			
 			System.out.println("\u001B[47m\u001B[32m----------   \t" + comAutoProvYPadron.get(indiceProv).get(1) + "   \t----------\u001b[0m");
 			while (indiceCA == Integer.parseInt(comAutoProvYPadron.get(indiceProv).get(0))) {
