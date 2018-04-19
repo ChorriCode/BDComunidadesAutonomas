@@ -24,15 +24,19 @@ public  void mostrarDatosComAutonomasProvinciasHabitantes(ArrayList<ArrayList<St
 		while (indiceCA <20) {
 			
 			System.out.println("\u001B[47m\u001B[32m----------   \t" + comAutoProvYPadron.get(indiceProv).get(1) + "   \t----------\u001b[0m");
-			while (indiceCA == Integer.parseInt(comAutoProvYPadron.get(indiceProv).get(0))) {
-				
-				//System.out.println(comAutoProvYPadron.get(indiceProv).get(2) + " -\t " + comAutoProvYPadron.get(indiceProv).get(3) + " -\t " + comAutoProvYPadron.get(indiceProv).get(4));
-				System.out.printf("%-5s", comAutoProvYPadron.get(indiceProv).get(2) + "");
-				System.out.printf("%-25s", comAutoProvYPadron.get(indiceProv).get(3) + "");
-				System.out.printf("%-5s", comAutoProvYPadron.get(indiceProv).get(4) + "");
-				System.out.println();
-				subTotal += Integer.parseInt(comAutoProvYPadron.get(indiceProv).get(4));
-				indiceProv++;
+			try {
+				while (indiceCA == Integer.parseInt(comAutoProvYPadron.get(indiceProv).get(0))) {
+					
+					//System.out.println(comAutoProvYPadron.get(indiceProv).get(2) + " -\t " + comAutoProvYPadron.get(indiceProv).get(3) + " -\t " + comAutoProvYPadron.get(indiceProv).get(4));
+					System.out.printf("%-5s", comAutoProvYPadron.get(indiceProv).get(2) + "");
+					System.out.printf("%-25s", comAutoProvYPadron.get(indiceProv).get(3) + "");
+					System.out.printf("%-5s", comAutoProvYPadron.get(indiceProv).get(4) + "");
+					System.out.println();
+					subTotal += Integer.parseInt(comAutoProvYPadron.get(indiceProv).get(4));
+					indiceProv++;
+				}
+			} catch (IndexOutOfBoundsException e) {
+
 			}
 			
 			System.out.println("\u001B[36mTOTAL de habitantes de " + comAutoProvYPadron.get(indiceProv-1).get(1) + " = \u001B[41m\u001B[37m" + subTotal +  "\u001b[0m");
@@ -48,6 +52,15 @@ public  void mostrarDatosComAutonomasProvinciasHabitantes(ArrayList<ArrayList<St
 		System.out.println("\u001B[33mTOTAL de habitantes de España = \u001b[0m" + total);
 	}
 
-
+	public String hyphenatedFill(int spaces, String filler) {
+		String fill = "";
+		
+		for (int i = 0; i < spaces; i++) {
+			fill += filler;
+		}
+		
+		
+		return fill;
+	}
 	
 }

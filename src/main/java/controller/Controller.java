@@ -34,10 +34,11 @@ public class Controller {
 				
 				if (!(anteriorCA.equals(rs.getString(1))) ) {				
 					if (subTotal != 0) {
-						System.out.println("SubTotal: " + subTotal + " de " + anteriorCA);
+						System.out.println("SubTotal:" + myView.hyphenatedFill(30-"SubTotal:".length(), "." ) + subTotal);
 					}
 					
 					System.out.println("\nCOMUNIDAD AUTONOMA: " + rs.getString(1));
+					System.out.println(myView.hyphenatedFill(("COMUNIDAD AUTONOMA: " + rs.getString(1)).length(), "»" ));	
 					anteriorCA = rs.getString(1);
 					total += subTotal;
 					subTotal = 0;
@@ -45,7 +46,10 @@ public class Controller {
 					
 					subTotal += rs.getInt(3);
 					
-					System.out.println(rs.getString(2) + " - " + rs.getString(3));
+					System.out.println(rs.getString(2) + myView.hyphenatedFill(30-rs.getString(2).length(), "." ) + rs.getString(3));
+				if (rs.isLast() == true) {
+					System.out.println("SubTotal:" + myView.hyphenatedFill(30-"SubTotal:".length(), "." ) + subTotal);
+				}
 					
 			}
 			
