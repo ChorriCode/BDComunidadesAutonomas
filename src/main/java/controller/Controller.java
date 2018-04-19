@@ -38,7 +38,7 @@ public class Controller {
 				//añado el registro con todos los datos a la lista que contendrá todas las filas con datos.
 				datosConsulta.add(unRegistro);
 			}	
-			System.out.println(datosConsulta.toString());
+
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
