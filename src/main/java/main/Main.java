@@ -14,11 +14,13 @@ public class Main {
 									"paro",
 									"com.mysql.jdbc.Driver", 
 									"root", 
-									"");
+									"Gratis007");
 		View myView = new View();
 		Controller myController = new Controller(myModel, myView);
 		String sql = "SELECT provincias.CodCA, comunidadesautonomas.CA, municipios.codProvincia, provincia, sum(padron) from municipios LEFT JOIN padron on municipios.CodMunicipio = padron.CodMunicipio LEFT JOIN provincias on municipios.CodProvincia = provincias.CodProvincia LEFT JOIN comunidadesautonomas on provincias.CodCA = comunidadesautonomas.CodCA GROUP BY CodProvincia, provincia, CA order by CodCA, provincia;";
-		myController.solictarConsulta(myModel, myView, sql);
+		
+		myController.consultaPadronCAProv(myModel, myView, sql);
+		//myController.solictarConsulta(myModel, myView, sql);
 		
 	}
 

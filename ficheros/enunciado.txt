@@ -28,3 +28,7 @@ SELECT municipios.codProvincia, provincia, sum(padron) from municipios LEFT JOIN
 
 ademas el codigo y nombre de la comunidad a la que pertenece
 SELECT provincias.CodCA, comunidadesautonomas.CA, municipios.codProvincia, provincia, sum(padron) from municipios LEFT JOIN padron on municipios.CodMunicipio = padron.CodMunicipio LEFT JOIN provincias on municipios.CodProvincia = provincias.CodProvincia LEFT JOIN comunidadesautonomas on provincias.CodCA = comunidadesautonomas.CodCA GROUP BY CodProvincia, provincia, CA order by CA, provincia;
+
+
+select CA as Comunidad, provincia, sum(padron) as padron from padron pa inner join provincias p1, comunidadesautonomas c1, municipios m1 where pa.CodMunicipio 
+= m1.CodMunicipio and m1.CodProvincia = p1.CodProvincia and p1.CodCA = c1.CodCA group by p1.CodProvincia order by c1.CA, p1.Provincia
